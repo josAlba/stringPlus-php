@@ -1,0 +1,17 @@
+{
+    "name": "josalba/remplace-callback",
+    "autoload": {
+        "psr-4": {
+            "Josalba\\RemplaceCallback\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DuKe",
+            "email": "josalba@icloud.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
