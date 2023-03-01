@@ -1,8 +1,8 @@
 {
-    "name": "josalba/remplace-callback",
+    "name": "josalba/stringplus-php",
     "autoload": {
         "psr-4": {
-            "Josalba\\RemplaceCallback\\": "src/"
+            "Josalba\\String\\": "src/"
         }
     },
     "authors": [

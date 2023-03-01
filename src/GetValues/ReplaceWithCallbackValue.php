@@ -1,25 +1,27 @@
 <?php
 
-namespace Josalba\RemplaceCallback;
+namespace Josalba\String\GetValues;
 
-final class Remplace
+class ReplaceWithCallbackValue
 {
     /**
-     * @param string $originText
+     * @param string $original
      * @param array<string> $tags
      * @param callable $callback
      *
      * @return string
      */
-    public static function withCallback(string $originText, array $tags, callable $callback): string
+    public static function getValue(string $original, array $tags, callable $callback): string
     {
-        $resultText = $originText;
-
-        foreach ($tags as $tag) {
-            $resultText = self::remplaceTagsToCallback($resultText, $tag, $callback);
+        if (empty($tags)) {
+            return $original;
         }
 
-        return $resultText;
+        foreach ($tags as $tag) {
+            $original = self::remplaceTagsToCallback($original, $tag, $callback);
+        }
+
+        return $original;
     }
 
     /**
@@ -29,8 +31,11 @@ final class Remplace
      *
      * @return string
      */
-    private static function remplaceTagsToCallback(string $originalText, string $tag, callable $callback): string
-    {
+    private static function remplaceTagsToCallback(
+        string $originalText,
+        string $tag,
+        callable $callback
+    ): string {
         if (preg_match_all('/'.$tag.'/', $originalText) === 0) {
             return $originalText;
         }

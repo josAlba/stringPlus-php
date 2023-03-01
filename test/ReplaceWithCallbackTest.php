@@ -1,9 +1,9 @@
 <?php
 
-use Josalba\RemplaceCallback\Remplace;
+use Josalba\String\StringPlus;
 use PHPUnit\Framework\TestCase;
 
-class RemplaceTest extends TestCase
+class ReplaceWithCallbackTest extends TestCase
 {
     /**
      * @dataProvider dataTest
@@ -17,7 +17,7 @@ class RemplaceTest extends TestCase
      */
     public function testWithCallback(string $text, array $tags, callable $callback, string $result): void
     {
-        $text = Remplace::withCallback($text, $tags, $callback);
+        $text = StringPlus::create($text)->remplaceWithCallback($tags, $callback);
 
         $this->assertEquals($result, $text);
     }
