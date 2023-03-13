@@ -57,6 +57,11 @@ final class StringPlus
         return $stringPlus;
     }
 
+    public function in(string $string): bool
+    {
+        return strpos($this->result, $string) !== false;
+    }
+
     public function getLength(): int
     {
         return strlen($this->result);
@@ -74,6 +79,10 @@ final class StringPlus
 
     public function or(?string $value): self
     {
+        if (!empty($this->result)) {
+            return $this;
+        }
+
         $this->result = OrValue::getValue($this->result, $value);
 
         return $this;
@@ -145,5 +154,38 @@ final class StringPlus
         $this->result = ReplaceWithCallbackValue::getValue($this->result, $tags, $callback);
 
         return $this;
+    }
+
+    /**
+     * @param array<string> $values
+     *
+     * @return bool
+     */
+    public function inArray(array $values): bool
+    {
+        if ($this->isEmpty()) {
+            return false;
+        }
+
+        return in_array($this->result, $values, true);
+    }
+
+    /**
+     * @param array<string, mixed> $values
+     *
+     * @return bool
+     */
+    public function isKeyInArray(array $values): bool
+    {
+        if ($this->isEmpty()) {
+            return false;
+        }
+
+        return array_key_exists($this->result, $values);
+    }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->result);
     }
 }
