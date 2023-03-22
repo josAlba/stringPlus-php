@@ -54,9 +54,9 @@ Result
 
 ```php
  $text = StringPlus::create('')
-    ->or(null);
-    ->or('Lorem Ipsum');
-    ->or('');
+    ->or(null)
+    ->or('Lorem Ipsum')
+    ->or('')
     ->or('is');
 ```
 
