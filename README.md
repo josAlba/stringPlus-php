@@ -1,5 +1,10 @@
 # stringPlus-php
 
+![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D_7.4-8892BF.svg)
+![download](https://img.shields.io/github/downloads/josAlba/stringplus-php/total)
+
+```composer require josalba/stringplus-php```
+
 Esta clase proporciona una variedad de métodos para facilitar la transformación de strings
 
 ## Methods
