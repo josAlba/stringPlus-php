@@ -9,6 +9,7 @@ use Josalba\String\GetValues\ConcatValue;
 use Josalba\String\GetValues\OrValue;
 use Josalba\String\GetValues\RemoveSpacesValue;
 use Josalba\String\GetValues\RemoveTagsValue;
+use Josalba\String\GetValues\RemoveValue;
 use Josalba\String\GetValues\ReplaceValue;
 use Josalba\String\GetValues\ReplaceWithCallbackValue;
 use Josalba\String\GetValues\TrimValue;
@@ -187,5 +188,12 @@ final class StringPlus
     public function isEmpty(): bool
     {
         return empty($this->result);
+    }
+
+    public function remove(string ...$words): self
+    {
+        $this->result = RemoveValue::getValue($this->result, $words);
+
+        return $this;
     }
 }
